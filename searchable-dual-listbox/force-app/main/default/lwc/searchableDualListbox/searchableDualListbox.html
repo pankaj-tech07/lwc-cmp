@@ -1,0 +1,31 @@
+<template>
+    <lightning-card>
+        <div class="slds-page-header">
+            <div class="slds-page-header__row">
+                <div class="slds-page-header__col-title">
+                    <div class="slds-media">
+                        <div class="slds-media__body">
+                            <div class="slds-page-header__name">
+                                <div class="slds-page-header__name-title">
+                                    <h1>
+                                        <span class="slds-page-header__title slds-truncate"
+                                            title="Searchable Dual Listbox">Searchable Dual Listbox</span>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-m-around_x-small">
+            <div onkeyup={handleSearchKeyUp}>
+                <lightning-input name="enter-search" label="Search Accounts" type="text" style="width: 60%;">
+                </lightning-input>
+            </div>
+            <lightning-dual-listbox name="fields" label="Select Accounts" source-label="Available"
+                selected-label="Selected" options={mapData} onchange={handleChange}>
+            </lightning-dual-listbox>
+        </div>
+    </lightning-card>
+</template>
