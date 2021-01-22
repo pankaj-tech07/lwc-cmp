@@ -1,0 +1,45 @@
+<template>
+    <lightning-spinner if:true={isLoaded} alternative-text="Loading..." variant="brand">
+    </lightning-spinner>
+    <div class="slds-p-around_none slds-m-bottom_medium slds-m-horizontal_none">
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="3" padding="around-small">
+                <lightning-card title="Contact">
+                    <lightning-record-view-form record-id={recordId} object-api-name="Contact">
+                        <lightning-layout>
+                            <lightning-layout-item padding="around-small">
+                                <div class="header-column">
+                                    <lightning-output-field field-name="Name"></lightning-output-field>
+                                </div>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="around-small">
+                                <div class="header-column">
+                                    <lightning-output-field field-name="AccountId"></lightning-output-field>
+                                </div>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-record-view-form>
+                </lightning-card>
+            </lightning-layout-item>
+            <lightning-layout-item size="5" padding="around-small">
+                <lightning-card title="Accounts">
+                    <c-account-multi-select-lookup contact-id={recordId} onshowerrormsg={handleSpinner}>
+                    </c-account-multi-select-lookup>
+                </lightning-card>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+                <lightning-card title="Roles">
+                    <lightning-dual-listbox name="fields" source-label="Available" selected-label="Selected"
+                        options={mapRolesData} onchange={handleRoleChange} style="height: 100px;">
+                    </lightning-dual-listbox>
+                </lightning-card>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+    <div style="margin-top: 227px;">
+        <footer class="slds-modal__footer">
+            <button class="slds-button slds-button_neutral" onclick={handleCancelModal}>Cancel</button>
+            <button class="slds-button slds-button_brand" onclick={saveContactAccountRelation}>Save</button>
+        </footer>
+    </div>
+</template>

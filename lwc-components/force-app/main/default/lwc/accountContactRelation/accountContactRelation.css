@@ -1,0 +1,5 @@
+.ftr{
+        	bottom: 0 !important;
+            position: fixed !important;
+            width: -webkit-fill-available !important;
+        }
